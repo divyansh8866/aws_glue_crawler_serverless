@@ -1,0 +1,27 @@
+service: pcomb-cron-job
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.7
+  timeout: 10
+  iam:
+    role: ""
+  deploymentBucket:
+    name: ""
+  stackTags:
+    product: ""
+    env: qa
+    created-date: 2022-05-18
+    team: python-dev
+    customer-impact: false
+    terraform: false
+
+functions:
+  hello:
+    handler: handler.main
+    name: ""
+    runtime: python3.7
+    events: 
+      - schedule: cron(15 3 ? * MON *)
